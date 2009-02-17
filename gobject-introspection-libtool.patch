@@ -1,12 +1,13 @@
-diff -Nur gobject-introspection-0.6.0.orig/configure.ac gobject-introspection-0.6.0.libtool/configure.ac
---- gobject-introspection-0.6.0.orig/configure.ac	2008-10-31 14:01:42.000000000 -0600
-+++ gobject-introspection-0.6.0.libtool/configure.ac	2008-11-22 13:38:23.000000000 -0700
-@@ -76,7 +76,7 @@
+diff -urN gobject-introspection-0.6.2/configure.ac gobject-introspection-0.6.2.new/configure.ac
+--- gobject-introspection-0.6.2/configure.ac	2008-11-25 23:57:07.000000000 +0100
++++ gobject-introspection-0.6.2.new/configure.ac	2009-01-24 20:32:12.000000000 +0100
+@@ -36,6 +36,9 @@
+ AC_PROG_LIBTOOL
+ PKG_PROG_PKG_CONFIG
  
- AC_MSG_CHECKING(for the suffix of shared libraries)
- export SED
--shrext_cmds=`./libtool --config | grep '^shrext_cmds='`
-+shrext_cmds=`libtool --config | grep '^shrext_cmds='`
- eval $shrext_cmds
- eval std_shrext=$shrext_cmds
- # chop the initial dot
++dnl when using libtool 2.x create libtool early, because it's used in configure
++m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
++
+ AC_PROG_LEX
+ if test "$LEX" = :; then
+ 	AC_MSG_ERROR([flex not found but required])
