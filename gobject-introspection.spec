@@ -88,9 +88,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_bindir}/g-ir-compiler
-%attr(755,root,root) %{_bindir}/g-ir-generate
-%attr(755,root,root) %{_bindir}/g-ir-scanner
 %{_mandir}/man1/g-ir-compiler.1*
 %{_mandir}/man1/g-ir-generate.1*
 %{_mandir}/man1/g-ir-scanner.1*
@@ -104,13 +101,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-everything-1.0.so.1
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so.0.0.0
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-1.0.so.0
-%dir %{_datadir}/gir-1.0
-%{_datadir}/gir-1.0/*.gir
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/g-ir-compiler
+%attr(755,root,root) %{_bindir}/g-ir-generate
+%attr(755,root,root) %{_bindir}/g-ir-scanner
 %attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
@@ -118,6 +116,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgirepository-1.0.la
 %{_libdir}/libgirepository-everything-1.0.la
 %{_datadir}/aclocal/introspection.m4
+%dir %{_datadir}/gir-1.0
+%{_datadir}/gir-1.0/*.gir
 
 %files static
 %defattr(644,root,root,755)
