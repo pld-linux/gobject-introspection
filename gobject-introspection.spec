@@ -94,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/g-ir-compiler.1*
 %{_mandir}/man1/g-ir-generate.1*
 %{_mandir}/man1/g-ir-scanner.1*
+%dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
 %{py_sitedir}/giscanner/_giscanner.so
 
