@@ -1,11 +1,11 @@
 Summary:	Introspection for GObject libraries
 Name:		gobject-introspection
-Version:	0.6.3
-Release:	2
+Version:	0.6.4
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	5f0d333573bffecd76c461101cff2be1
+# Source0-md5:	5cc41cec231953003c628ccf16c576c9
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
