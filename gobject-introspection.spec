@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
+%{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
 %{_includedir}/gobject-introspection-1.0
 %{_libdir}/libgirepository-1.0.la
 %{_libdir}/libgirepository-everything-1.0.la
