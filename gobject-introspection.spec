@@ -1,7 +1,7 @@
 Summary:	Introspection for GObject libraries
 Name:		gobject-introspection
 Version:	0.6.5
-Release:	2
+Release:	3
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.6/%{name}-%{version}.tar.bz2
@@ -96,7 +96,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
 %{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
 %{_includedir}/gobject-introspection-1.0
-%dir %{_libdir}/girepository-1.0
 %{_libdir}/libgirepository-1.0.la
 %{_libdir}/libgirepository-everything-1.0.la
 %{_datadir}/aclocal/introspection.m4
