@@ -1,11 +1,11 @@
 Summary:	Introspection for GObject libraries
 Name:		gobject-introspection
-Version:	0.6.5
-Release:	3
+Version:	0.6.7
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	c946cddf10f02a3aea483967ab6de605
+# Source0-md5:	41205c14cbd86632806578448e29bd30
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
@@ -28,6 +28,7 @@ Summary:	Header files for gobject-introspection library
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.16.0
+Requires:	libffi-devel
 
 %description devel
 Header files for gobject-introspection library.
@@ -101,6 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/aclocal/introspection.m4
 %dir %{_datadir}/gir-1.0
 %{_datadir}/gir-1.0/*.gir
+%{_datadir}/gobject-introspection-1.0
 %dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
 %{py_sitedir}/giscanner/_giscanner.so
