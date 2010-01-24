@@ -1,4 +1,5 @@
 Summary:	Introspection for GObject libraries
+Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	0.6.7
 Release:	1
@@ -23,8 +24,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Tools for introspecting GObject-based frameworks.
 
+%description -l pl.UTF-8
+Narzędzia do obserwacji szkieletów opartych na bibliotece GObject.
+
 %package devel
 Summary:	Header files for gobject-introspection library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.16.0
@@ -33,13 +38,20 @@ Requires:	libffi-devel
 %description devel
 Header files for gobject-introspection library.
 
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki gobject-introspection.
+
 %package static
 Summary:	Static gobject-introspection library
+Summary(pl.UTF-8):	Statyczna biblioteka gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static gobject-introspection library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka gobject-introspection.
 
 %prep
 %setup -q
@@ -92,20 +104,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/g-ir-compiler.1*
 %{_mandir}/man1/g-ir-generate.1*
 %{_mandir}/man1/g-ir-scanner.1*
-%attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so
-%{_pkgconfigdir}/gobject-introspection-1.0.pc
-%{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
-%{_includedir}/gobject-introspection-1.0
+%attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so
 %{_libdir}/libgirepository-1.0.la
 %{_libdir}/libgirepository-everything-1.0.la
-%{_datadir}/aclocal/introspection.m4
+%{_includedir}/gobject-introspection-1.0
+%{_pkgconfigdir}/gobject-introspection-1.0.pc
+%{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
+%{_aclocaldir}/introspection.m4
 %dir %{_datadir}/gir-1.0
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/gobject-introspection-1.0
 %dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
-%{py_sitedir}/giscanner/_giscanner.so
+%attr(755,root,root) %{py_sitedir}/giscanner/_giscanner.so
 
 %files static
 %defattr(644,root,root,755)
