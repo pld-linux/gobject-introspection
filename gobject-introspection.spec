@@ -12,12 +12,16 @@ URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	bison
+BuildRequires:	flex
 BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	glibc-misc
 BuildRequires:	libffi-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 1:2.5
 BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	python-modules
+BuildRequires:	rpm-pythonprov
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,6 +38,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.16.0
 Requires:	libffi-devel
+Requires:	python-modules
 
 %description devel
 Header files for gobject-introspection library.
