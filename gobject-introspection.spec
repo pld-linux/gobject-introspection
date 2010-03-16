@@ -68,7 +68,8 @@ Statyczna biblioteka gobject-introspection.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-silent-rules
 %{__make}
 
 %install
