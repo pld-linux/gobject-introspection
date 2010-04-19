@@ -1,12 +1,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	0.6.9
+Version:	0.6.10
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	37cb473c6bafd03c4a48e1f37e19cc04
+# Source0-md5:	cdf7af644a0407c3fd2d57ba2bb3549f
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
@@ -95,9 +95,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so.1.0.0
+%attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-everything-1.0.so.1
-%attr(755,root,root) %{_libdir}/libgirepository-1.0.so.0.0.0
+%attr(755,root,root) %{_libdir}/libgirepository-gimarshallingtests-1.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgirepository-gimarshallingtests-1.0.so.1
+%attr(755,root,root) %{_libdir}/libgirepository-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-1.0.so.0
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/*.typelib
@@ -112,8 +114,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/g-ir-scanner.1*
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so
 %attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so
+%attr(755,root,root) %{_libdir}/libgirepository-gimarshallingtests-1.0.so
 %{_libdir}/libgirepository-1.0.la
 %{_libdir}/libgirepository-everything-1.0.la
+%{_libdir}/libgirepository-gimarshallingtests-1.0.la
 %{_includedir}/gobject-introspection-1.0
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
 %{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
@@ -129,3 +133,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libgirepository-1.0.a
 %{_libdir}/libgirepository-everything-1.0.a
+%{_libdir}/libgirepository-gimarshallingtests-1.0.a
