@@ -5,7 +5,7 @@
  
  
 -with LibtoolImporter:
-+with LibtoolImporter("what", "author"):
++with LibtoolImporter(None, None):
      from giscanner._giscanner import collect_attributes
  
  
@@ -16,7 +16,7 @@
  
      def __init__(self):
 -        with LibtoolImporter:
-+        with LibtoolImporter("had", "in mind?"):
++        with LibtoolImporter(None, None):
              from giscanner._giscanner import SourceScanner
          self._scanner = SourceScanner()
          self._filenames = []
