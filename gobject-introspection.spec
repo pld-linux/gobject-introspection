@@ -10,6 +10,7 @@ Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.9/%{name}-%{version}.tar.bz2
 # Source0-md5:	11aac73dc37348bf3dd11a4f400500ad
 Patch0:		%{name}-libtool.patch
+Patch1:		%{name}-build.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
@@ -65,6 +66,7 @@ Statyczna biblioteka gobject-introspection.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
