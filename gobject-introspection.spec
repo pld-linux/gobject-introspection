@@ -3,12 +3,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	0.9.0
+Version:	0.9.2
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	11aac73dc37348bf3dd11a4f400500ad
+# Source0-md5:	921f03ddca49241a56ff12b81db0e92c
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-build.patch
 URL:		http://live.gnome.org/GObjectIntrospection
@@ -63,6 +63,18 @@ Static gobject-introspection library.
 %description static -l pl.UTF-8
 Statyczna biblioteka gobject-introspection.
 
+%package apidocs
+Summary:	gobject-introspection API documentation
+Summary(pl.UTF-8):	Dokumentacja API gobject-introspection
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+gobject-introspection API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API gobject-introspection.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -75,7 +87,8 @@ Statyczna biblioteka gobject-introspection.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -106,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgirepository-gimarshallingtests-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-gimarshallingtests-1.0.so.1
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgirepository-1.0.so.0
+%attr(755,root,root) %ghost %{_libdir}/libgirepository-1.0.so.1
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/*.typelib
 
@@ -140,3 +153,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgirepository-1.0.a
 %{_libdir}/libgirepository-everything-1.0.a
 %{_libdir}/libgirepository-gimarshallingtests-1.0.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/gi
