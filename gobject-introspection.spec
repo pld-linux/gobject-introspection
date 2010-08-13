@@ -3,14 +3,13 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	0.9.2
+Version:	0.9.3
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	921f03ddca49241a56ff12b81db0e92c
+# Source0-md5:	f79a70e9461416ad630d34c8a35c7fe0
 Patch0:		%{name}-libtool.patch
-Patch1:		%{name}-build.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
@@ -19,6 +18,7 @@ BuildRequires:	cairo-devel
 BuildRequires:	flex
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	glibc-misc
+BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	libffi-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -78,7 +78,6 @@ Dokumentacja API gobject-introspection.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -88,20 +87,20 @@ Dokumentacja API gobject-introspection.
 %{__automake}
 %configure \
 	--disable-silent-rules \
+	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{py_sitedir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_libdir}/gobject-introspection/giscanner $RPM_BUILD_ROOT%{py_sitedir}/
+mv $RPM_BUILD_ROOT%{_libdir}/gobject-introspection/giscanner $RPM_BUILD_ROOT%{py_sitedir}
 
-rm $RPM_BUILD_ROOT%{py_sitedir}/giscanner/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/giscanner/*.{a,la}
 
 %py_postclean
 
