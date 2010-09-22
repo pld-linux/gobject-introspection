@@ -3,12 +3,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	0.9.3
+Version:	0.9.5
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	f79a70e9461416ad630d34c8a35c7fe0
+# Source0-md5:	114684e42d69fdad9d9626dc97e79d7d
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
@@ -113,10 +113,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgirepository-everything-1.0.so.1
-%attr(755,root,root) %{_libdir}/libgirepository-gimarshallingtests-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgirepository-gimarshallingtests-1.0.so.1
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-1.0.so.1
 %dir %{_libdir}/girepository-1.0
@@ -131,11 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/g-ir-generate.1*
 %{_mandir}/man1/g-ir-scanner.1*
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so
-%attr(755,root,root) %{_libdir}/libgirepository-everything-1.0.so
-%attr(755,root,root) %{_libdir}/libgirepository-gimarshallingtests-1.0.so
 %{_libdir}/libgirepository-1.0.la
-%{_libdir}/libgirepository-everything-1.0.la
-%{_libdir}/libgirepository-gimarshallingtests-1.0.la
 %{_includedir}/gobject-introspection-1.0
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
 %{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
@@ -150,8 +142,6 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgirepository-1.0.a
-%{_libdir}/libgirepository-everything-1.0.a
-%{_libdir}/libgirepository-gimarshallingtests-1.0.a
 
 %files apidocs
 %defattr(644,root,root,755)
