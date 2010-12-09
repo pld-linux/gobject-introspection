@@ -20,6 +20,7 @@ BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	glibc-misc
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	libffi-devel
+BuildRequires:	libffi-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 1:2.5
