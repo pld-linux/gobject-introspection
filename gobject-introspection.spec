@@ -3,12 +3,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	0.10.0
+Version:	0.10.1
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	3d45a64d0d1827a2e3e78ad2d937e8fe
+# Source0-md5:	46faf231243ef5918bb30a38dbc62f10
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
@@ -16,7 +16,7 @@ BuildRequires:	automake >= 1:1.8
 BuildRequires:	bison
 BuildRequires:	cairo-devel
 BuildRequires:	flex
-BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	glib2-devel >= 1:2.24.0
 BuildRequires:	glibc-misc
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	libffi-devel
@@ -27,6 +27,7 @@ BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
 BuildRequires:	zlib-devel
+Requires:	glib2 >= 1:2.24.0
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,7 +42,7 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 2.16.0
+Requires:	glib2-devel >= 1:2.24.0
 Requires:	libffi-devel
 Requires:	python-modules
 
@@ -112,11 +113,26 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS CONTRIBUTORS NEWS README TODO
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-1.0.so.1
 %dir %{_libdir}/girepository-1.0
-%{_libdir}/girepository-1.0/*.typelib
+%{_libdir}/girepository-1.0/DBus-1.0.typelib
+%{_libdir}/girepository-1.0/DBusGLib-1.0.typelib
+%{_libdir}/girepository-1.0/GIRepository-2.0.typelib
+%{_libdir}/girepository-1.0/GL-1.0.typelib
+%{_libdir}/girepository-1.0/GLib-2.0.typelib
+%{_libdir}/girepository-1.0/GModule-2.0.typelib
+%{_libdir}/girepository-1.0/GObject-2.0.typelib
+%{_libdir}/girepository-1.0/Gio-2.0.typelib
+%{_libdir}/girepository-1.0/cairo-1.0.typelib
+%{_libdir}/girepository-1.0/fontconfig-2.0.typelib
+%{_libdir}/girepository-1.0/freetype2-2.0.typelib
+%{_libdir}/girepository-1.0/libxml2-2.0.typelib
+%{_libdir}/girepository-1.0/xfixes-4.0.typelib
+%{_libdir}/girepository-1.0/xft-2.0.typelib
+%{_libdir}/girepository-1.0/xlib-2.0.typelib
+%{_libdir}/girepository-1.0/xrandr-1.3.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -134,7 +150,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
 %{_aclocaldir}/introspection.m4
 %dir %{_datadir}/gir-1.0
-%{_datadir}/gir-1.0/*.gir
+%{_datadir}/gir-1.0/DBus-1.0.gir
+%{_datadir}/gir-1.0/DBusGLib-1.0.gir
+%{_datadir}/gir-1.0/GIRepository-2.0.gir
+%{_datadir}/gir-1.0/GL-1.0.gir
+%{_datadir}/gir-1.0/GLib-2.0.gir
+%{_datadir}/gir-1.0/GModule-2.0.gir
+%{_datadir}/gir-1.0/GObject-2.0.gir
+%{_datadir}/gir-1.0/Gio-2.0.gir
+%{_datadir}/gir-1.0/cairo-1.0.gir
+%{_datadir}/gir-1.0/fontconfig-2.0.gir
+%{_datadir}/gir-1.0/freetype2-2.0.gir
+%{_datadir}/gir-1.0/libxml2-2.0.gir
+%{_datadir}/gir-1.0/xfixes-4.0.gir
+%{_datadir}/gir-1.0/xft-2.0.gir
+%{_datadir}/gir-1.0/xlib-2.0.gir
+%{_datadir}/gir-1.0/xrandr-1.3.gir
 %{_datadir}/gobject-introspection-1.0
 %dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
