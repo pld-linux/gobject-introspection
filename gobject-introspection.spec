@@ -3,12 +3,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.29.16
+Version:	1.29.17
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.29/%{name}-%{version}.tar.bz2
-# Source0-md5:	79fda17de077e95bf7a093b0e537379e
+# Source0-md5:	0870718ff9c7071875cb9ee604271283
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.59
@@ -138,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/g-ir-annotation-tool
 %attr(755,root,root) %{_bindir}/g-ir-compiler
+%attr(755,root,root) %{_bindir}/g-ir-doc-tool
 %attr(755,root,root) %{_bindir}/g-ir-generate
 %attr(755,root,root) %{_bindir}/g-ir-scanner
 %{_mandir}/man1/g-ir-compiler.1*
