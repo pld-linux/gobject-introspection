@@ -18,9 +18,9 @@ BuildRequires:	cairo-gobject-devel
 BuildRequires:	flex
 BuildRequires:	glib2-devel >= 1:2.29.7
 BuildRequires:	glibc-misc
-BuildRequires:	gtk-doc >= 1.12
+BuildRequires:	gtk-doc >= 1.15
 BuildRequires:	libffi-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 1:2.5
 BuildRequires:	python-devel >= 1:2.5
