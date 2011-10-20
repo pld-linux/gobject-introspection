@@ -4,7 +4,7 @@ Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	0.10.8
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
