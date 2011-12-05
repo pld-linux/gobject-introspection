@@ -5,7 +5,6 @@ Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	0.10.8
 Release:	2
-Epoch:		1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.10/%{name}-%{version}.tar.bz2
@@ -42,7 +41,7 @@ Narzędzia do obserwacji szkieletów opartych na bibliotece GObject.
 Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.24.0
 Requires:	libffi-devel
 Requires:	python-modules
@@ -57,7 +56,7 @@ Pliki nagłówkowe biblioteki gobject-introspection.
 Summary:	Static gobject-introspection library
 Summary(pl.UTF-8):	Statyczna biblioteka gobject-introspection
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static gobject-introspection library.
