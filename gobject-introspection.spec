@@ -3,12 +3,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.30.0
+Version:	1.32.0
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.30/%{name}-%{version}.tar.xz
-# Source0-md5:	4e5f8d02890aa1f2459b9890e0a45486
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.32/%{name}-%{version}.tar.xz
+# Source0-md5:	d0e8266f14063160770aece127211772
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
@@ -16,7 +16,7 @@ BuildRequires:	automake >= 1:1.11
 BuildRequires:	bison
 BuildRequires:	cairo-gobject-devel
 BuildRequires:	flex
-BuildRequires:	glib2-devel >= 1:2.29.7
+BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	glibc-misc
 BuildRequires:	gtk-doc >= 1.15
 BuildRequires:	libffi-devel
@@ -29,7 +29,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	glib2 >= 1:2.29.7
+Requires:	glib2 >= 1:2.30.0
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,7 +44,7 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.29.7
+Requires:	glib2-devel >= 1:2.30.0
 Requires:	libffi-devel
 Requires:	python-modules
 
@@ -140,7 +140,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/g-ir-annotation-tool
 %attr(755,root,root) %{_bindir}/g-ir-compiler
-%attr(755,root,root) %{_bindir}/g-ir-doc-tool
 %attr(755,root,root) %{_bindir}/g-ir-generate
 %attr(755,root,root) %{_bindir}/g-ir-scanner
 %{_mandir}/man1/g-ir-compiler.1*
@@ -172,6 +171,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gobject-introspection-1.0
 %dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
+%{py_sitedir}/giscanner/*.tmpl
 %attr(755,root,root) %{py_sitedir}/giscanner/_giscanner.so
 
 %files static
