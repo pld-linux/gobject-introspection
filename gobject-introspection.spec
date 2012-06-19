@@ -1,5 +1,9 @@
 # TODO:
 # - requires gobject-introspection-devel to build - fix it
+#
+# Conditional build:
+%bcond_without	cairo		# build without cairo
+#
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
@@ -14,7 +18,7 @@ URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	bison
-BuildRequires:	cairo-gobject-devel
+%{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
 BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	glibc-misc
@@ -89,6 +93,7 @@ Dokumentacja API gobject-introspection.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{!?with_cairo:--disable-tests} \
 	--disable-silent-rules \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
