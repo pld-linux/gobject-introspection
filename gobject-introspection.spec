@@ -3,16 +3,18 @@
 #
 # Conditional build:
 %bcond_without	cairo		# build without cairo
+%bcond_without	static_libs	# do not build static libs
+%bcond_without	apidocs		# do not build and package API docs
 #
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.32.1
+Version:	1.33.9
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.32/%{name}-%{version}.tar.xz
-# Source0-md5:	7bbdb696c37bb98aef5af02c4b8975e3
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.33/%{name}-%{version}.tar.xz
+# Source0-md5:	7c91b720ec076822bd25d19c986d88ce
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
@@ -22,7 +24,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	glibc-misc
-BuildRequires:	gtk-doc >= 1.15
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.15}
 BuildRequires:	libffi-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
@@ -95,7 +97,8 @@ Dokumentacja API gobject-introspection.
 %configure \
 	%{!?with_cairo:--disable-tests} \
 	--disable-silent-rules \
-	--enable-gtk-doc \
+	%{__enable_disable apidocs gtk-doc} \
+	%{__enable_disable static_libs static} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -108,7 +111,8 @@ install -d $RPM_BUILD_ROOT%{py_sitedir}
 
 mv $RPM_BUILD_ROOT%{_libdir}/gobject-introspection/giscanner $RPM_BUILD_ROOT%{py_sitedir}
 
-%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/giscanner/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/giscanner/*.{a,la} \
+    $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %py_postclean
 
@@ -151,7 +155,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/g-ir-generate.1*
 %{_mandir}/man1/g-ir-scanner.1*
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so
-%{_libdir}/libgirepository-1.0.la
 %{_includedir}/gobject-introspection-1.0
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
 %{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
@@ -179,10 +182,14 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/giscanner/*.tmpl
 %attr(755,root,root) %{py_sitedir}/giscanner/_giscanner.so
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgirepository-1.0.a
+%endif
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/gi
+%endif
