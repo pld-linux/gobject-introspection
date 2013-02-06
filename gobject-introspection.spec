@@ -5,12 +5,12 @@
 %bcond_without	cairo		# build without cairo
 %bcond_without	static_libs	# do not build static libs
 %bcond_without	apidocs		# do not build and package API docs
-#
+
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	1.34.2
-Release:	1
+Release:	2
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.34/%{name}-%{version}.tar.xz
@@ -53,6 +53,8 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.34.1
 Requires:	libffi-devel
 Requires:	python-modules
+# for ldd
+Requires:	glibc-misc
 
 %description devel
 Header files for gobject-introspection library.
