@@ -102,16 +102,14 @@ Dokumentacja API gobject-introspection.
 	%{__enable_disable apidocs gtk-doc} \
 	%{__enable_disable static_libs static} \
 	--with-html-dir=%{_gtkdocdir}
-%{__make}
+%{__make} \
+	pkgpyexecdir=%{py_sitedir}/giscanner
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{py_sitedir}
-
 %{__make} install \
+	pkgpyexecdir=%{py_sitedir}/giscanner \
 	DESTDIR=$RPM_BUILD_ROOT
-
-mv $RPM_BUILD_ROOT%{_libdir}/gobject-introspection/giscanner $RPM_BUILD_ROOT%{py_sitedir}
 
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/giscanner/*.{a,la} \
     $RPM_BUILD_ROOT%{_libdir}/*.la
