@@ -149,6 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/g-ir-annotation-tool
 %attr(755,root,root) %{_bindir}/g-ir-compiler
+%attr(755,root,root) %{_bindir}/g-ir-doc-tool
 %attr(755,root,root) %{_bindir}/g-ir-generate
 %attr(755,root,root) %{_bindir}/g-ir-scanner
 %{_mandir}/man1/g-ir-compiler.1*
