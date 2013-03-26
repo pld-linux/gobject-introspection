@@ -9,12 +9,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.34.2
-Release:	2
+Version:	1.36.0
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.34/%{name}-%{version}.tar.xz
-# Source0-md5:	9dc9822eb2912e9b73e51ae67fe86145
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.36/%{name}-%{version}.tar.xz
+# Source0-md5:	747523a60d02effe39417e2157b3a1c4
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
@@ -22,7 +22,7 @@ BuildRequires:	automake >= 1:1.11
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
-BuildRequires:	glib2-devel >= 1:2.34.1
+BuildRequires:	glib2-devel >= 1:2.36.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.15}
 BuildRequires:	libffi-devel
@@ -35,7 +35,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	glib2 >= 1:2.34.1
+Requires:	glib2 >= 1:2.36.0
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,7 +50,7 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.34.1
+Requires:	glib2-devel >= 1:2.36.0
 Requires:	libffi-devel
 Requires:	python-modules
 # for ldd
@@ -159,6 +159,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
 %{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
 %{_aclocaldir}/introspection.m4
+%dir %{_libdir}/gobject-introspection
+%dir %{_libdir}/gobject-introspection/giscanner
+%{_libdir}/gobject-introspection/giscanner/doctemplates
 %dir %{_datadir}/gir-1.0
 %{_datadir}/gir-1.0/DBus-1.0.gir
 %{_datadir}/gir-1.0/DBusGLib-1.0.gir
@@ -179,7 +182,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gobject-introspection-1.0
 %dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
-%{py_sitedir}/giscanner/*.tmpl
 %attr(755,root,root) %{py_sitedir}/giscanner/_giscanner.so
 
 %if %{with static_libs}
