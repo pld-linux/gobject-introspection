@@ -55,6 +55,8 @@ Requires:	libffi-devel
 Requires:	python-modules
 # for ldd
 Requires:	glibc-misc
+# vala 0.18 seems to fail on recently generated .gir files
+Conflicts:	vala < 2:0.20
 
 %description devel
 Header files for gobject-introspection library.
