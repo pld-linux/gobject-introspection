@@ -10,7 +10,7 @@ Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	1.36.0
-Release:	1
+Release:	2
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.36/%{name}-%{version}.tar.xz
@@ -29,6 +29,7 @@ BuildRequires:	libffi-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 1:2.5
+BuildRequires:	python-Mako
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
@@ -52,6 +53,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.36.0
 Requires:	libffi-devel
+Requires:	python-Mako
 Requires:	python-modules
 # for ldd
 Requires:	glibc-misc
