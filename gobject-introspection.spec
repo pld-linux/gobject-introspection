@@ -9,12 +9,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.36.0
-Release:	3
+Version:	1.37.4
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.36/%{name}-%{version}.tar.xz
-# Source0-md5:	747523a60d02effe39417e2157b3a1c4
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.37/%{name}-%{version}.tar.xz
+# Source0-md5:	991763d65c6e2930088366c6056488ce
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
@@ -187,6 +187,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gobject-introspection-1.0
 %dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
+%dir %{py_sitedir}/giscanner/collections
+%{py_sitedir}/giscanner/collections/*.py[co]
 %attr(755,root,root) %{py_sitedir}/giscanner/_giscanner.so
 
 %if %{with static_libs}
