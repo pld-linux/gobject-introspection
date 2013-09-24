@@ -9,12 +9,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.37.6
+Version:	1.38.0
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.37/%{name}-%{version}.tar.xz
-# Source0-md5:	2dc3965fa9ec096da48e307e63621cdb
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.38/%{name}-%{version}.tar.xz
+# Source0-md5:	4851028e950ec0f809e26676b22aba97
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
@@ -28,10 +28,10 @@ BuildRequires:	glibc-misc
 BuildRequires:	libffi-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
-BuildRequires:	python >= 1:2.5
+BuildRequires:	python >= 1:2.6
 BuildRequires:	python-Mako
 BuildRequires:	python-devel >= 1:2.5
-BuildRequires:	python-modules
+BuildRequires:	python-modules >= 1:2.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -54,7 +54,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.36.0
 Requires:	libffi-devel
 Requires:	python-Mako
-Requires:	python-modules
+Requires:	python-modules >= 1:2.6
 # for ldd
 Requires:	glibc-misc
 # vala 0.18 seems to fail on recently generated .gir files
@@ -144,6 +144,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/girepository-1.0/fontconfig-2.0.typelib
 %{_libdir}/girepository-1.0/freetype2-2.0.typelib
 %{_libdir}/girepository-1.0/libxml2-2.0.typelib
+%{_libdir}/girepository-1.0/win32-1.0.typelib
 %{_libdir}/girepository-1.0/xfixes-4.0.typelib
 %{_libdir}/girepository-1.0/xft-2.0.typelib
 %{_libdir}/girepository-1.0/xlib-2.0.typelib
@@ -180,6 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gir-1.0/fontconfig-2.0.gir
 %{_datadir}/gir-1.0/freetype2-2.0.gir
 %{_datadir}/gir-1.0/libxml2-2.0.gir
+%{_datadir}/gir-1.0/win32-1.0.gir
 %{_datadir}/gir-1.0/xfixes-4.0.gir
 %{_datadir}/gir-1.0/xft-2.0.gir
 %{_datadir}/gir-1.0/xlib-2.0.gir
