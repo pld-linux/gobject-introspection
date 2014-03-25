@@ -9,12 +9,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.38.0
+Version:	1.40.0
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.38/%{name}-%{version}.tar.xz
-# Source0-md5:	4851028e950ec0f809e26676b22aba97
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.40/%{name}-%{version}.tar.xz
+# Source0-md5:	bbb103b5d88dbf2a257b7a26ae9bc666
 Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
@@ -24,8 +24,8 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	glib2-devel >= 1:2.36.0
 BuildRequires:	glibc-misc
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.15}
-BuildRequires:	libffi-devel
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
+BuildRequires:	libffi-devel >= 3.0.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 1:2.6
@@ -52,7 +52,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.36.0
-Requires:	libffi-devel
+Requires:	libffi-devel >= 3.0.0
 Requires:	python-Mako
 Requires:	python-modules >= 1:2.6
 # for ldd
