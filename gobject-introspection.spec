@@ -15,7 +15,6 @@ License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.42/%{name}-%{version}.tar.xz
 # Source0-md5:	4fa52f6b67367d9c1b99b98683ced202
-Patch0:		%{name}-libtool.patch
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -92,7 +91,6 @@ Dokumentacja API gobject-introspection.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
