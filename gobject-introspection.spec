@@ -10,7 +10,7 @@ Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	1.48.0
-Release:	1
+Release:	2
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.48/%{name}-%{version}.tar.xz
@@ -82,6 +82,9 @@ Summary:	gobject-introspection API documentation
 Summary(pl.UTF-8):	Dokumentacja API gobject-introspection
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 gobject-introspection API documentation.
