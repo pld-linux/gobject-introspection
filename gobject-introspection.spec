@@ -9,33 +9,33 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.48.0
-Release:	2
+Version:	1.50.0
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.48/%{name}-%{version}.tar.xz
-# Source0-md5:	01301fa9019667d48e927353e08bc218
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.50/%{name}-%{version}.tar.xz
+# Source0-md5:	5af8d724f25d0c9cfbe6df41b77e5dc0
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
-BuildRequires:	glib2-devel >= 1:2.48.0
+BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
-BuildRequires:	python >= 1:2.6
+BuildRequires:	python >= 1:2.7
 BuildRequires:	python-Mako
-BuildRequires:	python-devel >= 1:2.5
-BuildRequires:	python-modules >= 1:2.6
+BuildRequires:	python-devel >= 1:2.7
+BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	glib2 >= 1:2.48.0
+Requires:	glib2 >= 1:2.50.0
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,10 +50,10 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.48.0
+Requires:	glib2-devel >= 1:2.50.0
 Requires:	libffi-devel >= 3.0.0
 Requires:	python-Mako
-Requires:	python-modules >= 1:2.6
+Requires:	python-modules >= 1:2.7
 # for ldd
 Requires:	glibc-misc
 # vala 0.18 seems to fail on recently generated .gir files
@@ -157,6 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/g-ir-compiler
 %attr(755,root,root) %{_bindir}/g-ir-doc-tool
 %attr(755,root,root) %{_bindir}/g-ir-generate
+%attr(755,root,root) %{_bindir}/g-ir-inspect
 %attr(755,root,root) %{_bindir}/g-ir-scanner
 %{_mandir}/man1/g-ir-compiler.1*
 %{_mandir}/man1/g-ir-generate.1*
