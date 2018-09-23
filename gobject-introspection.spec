@@ -6,19 +6,20 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.56.1
+Version:	1.58.0
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.56/%{name}-%{version}.tar.xz
-# Source0-md5:	62e5f5685b8d9752fdeaf17c057d53d1
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.58/%{name}-%{version}.tar.xz
+# Source0-md5:	94fec875276262037bfcd51226db12fe
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
+BuildRequires:	autoconf-archive
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
-BuildRequires:	glib2-devel >= 1:2.56.0
+BuildRequires:	glib2-devel >= 1:2.58.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
@@ -32,7 +33,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	glib2 >= 1:2.56.0
+Requires:	glib2 >= 1:2.58.0
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -126,7 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CONTRIBUTORS NEWS README TODO
+%doc NEWS README.rst TODO
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgirepository-1.0.so.1
 %dir %{_libdir}/girepository-1.0
@@ -189,8 +190,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gobject-introspection-1.0
 %dir %{py_sitedir}/giscanner
 %{py_sitedir}/giscanner/*.py[co]
-%dir %{py_sitedir}/giscanner/collections
-%{py_sitedir}/giscanner/collections/*.py[co]
 %attr(755,root,root) %{py_sitedir}/giscanner/_giscanner.so
 
 %if %{with static_libs}
