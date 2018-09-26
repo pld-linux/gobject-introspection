@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	cairo		# build without cairo
 %bcond_without	static_libs	# do not build static libs
@@ -48,7 +49,7 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.56.0
+Requires:	glib2-devel >= 1:2.58.0
 Requires:	libffi-devel >= 3.0.0
 Requires:	python-Mako
 Requires:	python-modules >= 1:2.7
