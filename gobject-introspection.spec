@@ -8,7 +8,7 @@ Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	1.58.0
-Release:	1
+Release:	2
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.58/%{name}-%{version}.tar.xz
@@ -29,6 +29,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python >= 1:2.7
 BuildRequires:	python-Mako
 BuildRequires:	python-devel >= 1:2.7
+BuildRequires:	python-markdown
 BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
