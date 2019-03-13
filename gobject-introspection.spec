@@ -7,12 +7,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.58.3
+Version:	1.60.0
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.58/%{name}-%{version}.tar.xz
-# Source0-md5:	182432c1f33886be8f4da073218b597d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.60/%{name}-%{version}.tar.xz
+# Source0-md5:	5f75baadfc9baffaeca203c280b9d592
 URL:		http://live.gnome.org/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	autoconf-archive
@@ -26,11 +26,11 @@ BuildRequires:	glibc-misc
 BuildRequires:	libffi-devel >= 3.0.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
-BuildRequires:	python >= 1:2.7
-BuildRequires:	python-Mako
-BuildRequires:	python-devel >= 1:2.7
-BuildRequires:	python-markdown
-BuildRequires:	python-modules >= 1:2.7
+BuildRequires:	python3 >= 1:3.4
+BuildRequires:	python3-Mako
+BuildRequires:	python3-devel >= 1:3.4
+BuildRequires:	python3-markdown
+BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -52,8 +52,8 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.58.0
 Requires:	libffi-devel >= 3.0.0
-Requires:	python-Mako
-Requires:	python-modules >= 1:2.7
+Requires:	python3-Mako
+Requires:	python3-modules >= 1:3.4
 # for ldd
 Requires:	glibc-misc
 # vala 0.18 seems to fail on recently generated .gir files
@@ -108,18 +108,16 @@ Dokumentacja API gobject-introspection.
 	%{__enable_disable static_libs static} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make} \
-	pkgpyexecdir=%{py_sitedir}/giscanner
+	pkgpyexecdir=%{py3_sitedir}/giscanner
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
-	pkgpyexecdir=%{py_sitedir}/giscanner \
+	pkgpyexecdir=%{py3_sitedir}/giscanner \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/giscanner/*.{a,la} \
+%{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/giscanner/*.{a,la} \
     $RPM_BUILD_ROOT%{_libdir}/*.la
-
-%py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -190,9 +188,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gir-1.0/xlib-2.0.gir
 %{_datadir}/gir-1.0/xrandr-1.3.gir
 %{_datadir}/gobject-introspection-1.0
-%dir %{py_sitedir}/giscanner
-%{py_sitedir}/giscanner/*.py[co]
-%attr(755,root,root) %{py_sitedir}/giscanner/_giscanner.so
+%dir %{py3_sitedir}/giscanner
+%{py3_sitedir}/giscanner/*.py
+%dir %{py3_sitedir}/giscanner/__pycache__
+%{py3_sitedir}/giscanner/__pycache__/*.py[co]
+%attr(755,root,root) %{py3_sitedir}/giscanner/_giscanner.so
 
 %if %{with static_libs}
 %files static
