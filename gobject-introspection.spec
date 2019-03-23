@@ -1,8 +1,8 @@
 #
 # Conditional build:
-%bcond_without	cairo		# build without cairo
-%bcond_without	static_libs	# do not build static libs
-%bcond_without	apidocs		# do not build and package API docs
+%bcond_without	cairo		# cairo support
+%bcond_without	static_libs	# static library
+%bcond_without	apidocs		# API documentation
 
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
@@ -13,7 +13,7 @@ License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.60/%{name}-%{version}.tar.xz
 # Source0-md5:	5f75baadfc9baffaeca203c280b9d592
-URL:		http://live.gnome.org/GObjectIntrospection
+URL:		https://wiki.gnome.org/action/show/Projects/GObjectIntrospection
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	autoconf-archive
 BuildRequires:	automake >= 1:1.11
@@ -112,12 +112,13 @@ Dokumentacja API gobject-introspection.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	pkgpyexecdir=%{py3_sitedir}/giscanner \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/giscanner/*.{a,la} \
-    $RPM_BUILD_ROOT%{_libdir}/*.la
+	$RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
