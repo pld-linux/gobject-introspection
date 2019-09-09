@@ -1,22 +1,18 @@
 #
 # Conditional build:
 %bcond_without	cairo		# cairo support
-%bcond_without	static_libs	# static library
 %bcond_without	apidocs		# API documentation
 
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.60.2
+Version:	1.62.0
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.60/%{name}-%{version}.tar.xz
-# Source0-md5:	57c1c5dcf3d0a9aa73d06c2d5e6960d7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.62/%{name}-%{version}.tar.xz
+# Source0-md5:	37278eab3704e42234b6080b8cf241f1
 URL:		https://wiki.gnome.org/action/show/Projects/GObjectIntrospection
-BuildRequires:	autoconf >= 2.63
-BuildRequires:	autoconf-archive
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
@@ -24,7 +20,8 @@ BuildRequires:	glib2-devel >= 1:2.58.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
-BuildRequires:	libtool >= 2:2.2
+BuildRequires:	meson >= 0.49.2
+BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python3 >= 1:3.4
 BuildRequires:	python3-Mako
@@ -32,6 +29,7 @@ BuildRequires:	python3-devel >= 1:3.4
 BuildRequires:	python3-markdown
 BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
@@ -65,18 +63,6 @@ Header files for gobject-introspection library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki gobject-introspection.
 
-%package static
-Summary:	Static gobject-introspection library
-Summary(pl.UTF-8):	Statyczna biblioteka gobject-introspection
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static gobject-introspection library.
-
-%description static -l pl.UTF-8
-Statyczna biblioteka gobject-introspection.
-
 %package apidocs
 Summary:	gobject-introspection API documentation
 Summary(pl.UTF-8):	Dokumentacja API gobject-introspection
@@ -95,30 +81,22 @@ Dokumentacja API gobject-introspection.
 %prep
 %setup -q
 
+%{__sed} -i -e "s,^giscannerdir[[:space:]]*=[[:space:]]*.*,giscannerdir='%{py3_sitedir}/giscanner'," giscanner/meson.build
+
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	%{!?with_cairo:--disable-tests} \
-	--disable-silent-rules \
-	%{__enable_disable apidocs gtk-doc} \
-	%{__enable_disable static_libs static} \
-	--with-html-dir=%{_gtkdocdir}
-%{__make} \
-	pkgpyexecdir=%{py3_sitedir}/giscanner
+%meson build \
+	-Ddoctool=true \
+	-Dgtk_doc=%{__true_false apidocs}
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	pkgpyexecdir=%{py3_sitedir}/giscanner \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
-%{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/giscanner/*.{a,la} \
-	$RPM_BUILD_ROOT%{_libdir}/*.la
+%py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
+%py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -140,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/girepository-1.0/GModule-2.0.typelib
 %{_libdir}/girepository-1.0/GObject-2.0.typelib
 %{_libdir}/girepository-1.0/Gio-2.0.typelib
+%{_libdir}/girepository-1.0/Vulkan-1.0.typelib
 %{_libdir}/girepository-1.0/cairo-1.0.typelib
 %{_libdir}/girepository-1.0/fontconfig-2.0.typelib
 %{_libdir}/girepository-1.0/freetype2-2.0.typelib
@@ -166,9 +145,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/gobject-introspection-1.0.pc
 %{_pkgconfigdir}/gobject-introspection-no-export-1.0.pc
 %{_aclocaldir}/introspection.m4
-%dir %{_libdir}/gobject-introspection
-%dir %{_libdir}/gobject-introspection/giscanner
-%{_libdir}/gobject-introspection/giscanner/doctemplates
 %dir %{_datadir}/gir-1.0
 %{_datadir}/gir-1.0/DBus-1.0.gir
 %{_datadir}/gir-1.0/DBusGLib-1.0.gir
@@ -178,6 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gir-1.0/GModule-2.0.gir
 %{_datadir}/gir-1.0/GObject-2.0.gir
 %{_datadir}/gir-1.0/Gio-2.0.gir
+%{_datadir}/gir-1.0/Vulkan-1.0.gir
 %{_datadir}/gir-1.0/cairo-1.0.gir
 %{_datadir}/gir-1.0/fontconfig-2.0.gir
 %{_datadir}/gir-1.0/freetype2-2.0.gir
@@ -193,13 +170,8 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/giscanner/*.py
 %dir %{py3_sitedir}/giscanner/__pycache__
 %{py3_sitedir}/giscanner/__pycache__/*.py[co]
-%attr(755,root,root) %{py3_sitedir}/giscanner/_giscanner.so
-
-%if %{with static_libs}
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libgirepository-1.0.a
-%endif
+%{py3_sitedir}/giscanner/doctemplates
+%attr(755,root,root) %{py3_sitedir}/giscanner/_giscanner.cpython-*.so
 
 %if %{with apidocs}
 %files apidocs
