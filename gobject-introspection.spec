@@ -21,7 +21,7 @@ BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
 BuildRequires:	meson >= 0.49.2
-BuildRequires:	ninja
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3 >= 1:3.4
 BuildRequires:	python3-Mako
@@ -54,6 +54,7 @@ Requires:	python3-Mako
 Requires:	python3-modules >= 1:3.4
 # for ldd
 Requires:	glibc-misc
+Obsoletes:	gobject-introspection-static < 1.62
 # vala 0.18 seems to fail on recently generated .gir files
 Conflicts:	vala < 2:0.20
 
