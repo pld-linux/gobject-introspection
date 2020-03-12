@@ -6,12 +6,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.62.0
-Release:	2
+Version:	1.64.0
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.62/%{name}-%{version}.tar.xz
-# Source0-md5:	37278eab3704e42234b6080b8cf241f1
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.64/%{name}-%{version}.tar.xz
+# Source0-md5:	1bad9923b0784601076aac00d1bf90b5
 URL:		https://wiki.gnome.org/action/show/Projects/GObjectIntrospection
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
@@ -20,7 +20,7 @@ BuildRequires:	glib2-devel >= 1:2.58.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
-BuildRequires:	meson >= 0.49.2
+BuildRequires:	meson >= 0.50.1
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3 >= 1:3.4
@@ -86,7 +86,7 @@ Dokumentacja API gobject-introspection.
 
 %build
 %meson build \
-	-Ddoctool=true \
+	-Ddoctool=enabled \
 	-Dgtk_doc=%{__true_false apidocs}
 
 %ninja_build -C build
@@ -98,6 +98,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
+
+%{__sed} -E -i -e '1s,#!\s*/usr/bin/env\s+python3(\s|$),#!%{__python3}\1,' \
+      $RPM_BUILD_ROOT%{_bindir}/{g-ir-annotation-tool,g-ir-doc-tool,g-ir-scanner}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
