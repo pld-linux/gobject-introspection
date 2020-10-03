@@ -6,12 +6,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.66.0
+Version:	1.66.1
 Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.66/%{name}-%{version}.tar.xz
-# Source0-md5:	3d23bfa9fed55249043717a8465531c9
+# Source0-md5:	f43d661d39ff52d33622cb1854aaaf76
 URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
@@ -29,7 +29,7 @@ BuildRequires:	python3-devel >= 1:3.4
 BuildRequires:	python3-markdown
 BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
@@ -69,9 +69,7 @@ Summary:	gobject-introspection API documentation
 Summary(pl.UTF-8):	Dokumentacja API gobject-introspection
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 gobject-introspection API documentation.
