@@ -69,7 +69,7 @@ Summary:	gobject-introspection API documentation
 Summary(pl.UTF-8):	Dokumentacja API gobject-introspection
 Group:		Documentation
 Requires:	gtk-doc-common
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 gobject-introspection API documentation.
