@@ -6,12 +6,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.66.1
-Release:	3
+Version:	1.68.0
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/1.66/%{name}-%{version}.tar.xz
-# Source0-md5:	f43d661d39ff52d33622cb1854aaaf76
+Source0:	https://download.gnome.org/sources/gobject-introspection/1.68/%{name}-%{version}.tar.xz
+# Source0-md5:	b106680b153bebb67c8987e64bbafcc6
 URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
@@ -23,11 +23,11 @@ BuildRequires:	libffi-devel >= 3.0.0
 BuildRequires:	meson >= 0.50.1
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	python3 >= 1:3.4
+BuildRequires:	python3 >= 1:3.6
 BuildRequires:	python3-Mako
-BuildRequires:	python3-devel >= 1:3.4
+BuildRequires:	python3-devel >= 1:3.6
 BuildRequires:	python3-markdown
-BuildRequires:	python3-modules >= 1:3.4
+BuildRequires:	python3-modules >= 1:3.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
@@ -51,7 +51,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.58.0
 Requires:	libffi-devel >= 3.0.0
 Requires:	python3-Mako
-Requires:	python3-modules >= 1:3.4
+Requires:	python3-modules >= 1:3.6
 # for ldd
 Requires:	glibc-misc
 Obsoletes:	gobject-introspection-static < 1.62
