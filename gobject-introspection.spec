@@ -28,6 +28,7 @@ BuildRequires:	python3-Mako
 BuildRequires:	python3-devel >= 1:3.6
 BuildRequires:	python3-markdown
 BuildRequires:	python3-modules >= 1:3.6
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
@@ -81,6 +82,7 @@ Dokumentacja API gobject-introspection.
 %setup -q
 
 %{__sed} -i -e "s,^giscannerdir[[:space:]]*=[[:space:]]*.*,giscannerdir='%{py3_sitedir}/giscanner'," giscanner/meson.build
+%{__sed} -i -e '/python_cmd =/ s,/usr/bin/env python@0@,/usr/bin/python@0@,' tools/meson.build
 
 %build
 %meson build \
@@ -96,9 +98,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
-
-%{__sed} -E -i -e '1s,#!\s*/usr/bin/env\s+python3(\s|$),#!%{__python3}\1,' \
-      $RPM_BUILD_ROOT%{_bindir}/{g-ir-annotation-tool,g-ir-doc-tool,g-ir-scanner}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
