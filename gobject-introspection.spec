@@ -7,7 +7,7 @@ Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	1.68.0
-Release:	1
+Release:	2
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gobject-introspection/1.68/%{name}-%{version}.tar.xz
@@ -16,7 +16,7 @@ URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
-BuildRequires:	glib2-devel >= 1:2.58.0
+BuildRequires:	glib2-devel >= 1:2.68.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
@@ -34,7 +34,7 @@ BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	glib2 >= 1:2.58.0
+Requires:	glib2 >= 1:2.68.0
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,7 +49,7 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.58.0
+Requires:	glib2-devel >= 1:2.68.0
 Requires:	libffi-devel >= 3.0.0
 Requires:	python3-Mako
 Requires:	python3-modules >= 1:3.6
