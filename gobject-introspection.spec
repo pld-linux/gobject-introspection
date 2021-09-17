@@ -6,21 +6,21 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.68.0
-Release:	2
+Version:	1.70.0
+Release:	1
 License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/gobject-introspection/1.68/%{name}-%{version}.tar.xz
-# Source0-md5:	b106680b153bebb67c8987e64bbafcc6
+Source0:	https://download.gnome.org/sources/gobject-introspection/1.70/%{name}-%{version}.tar.xz
+# Source0-md5:	940ea2d6b92efabc457b9c54ce2ff398
 URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
-BuildRequires:	glib2-devel >= 1:2.68.0
+BuildRequires:	glib2-devel >= 1:2.70.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
-BuildRequires:	meson >= 0.50.1
+BuildRequires:	meson >= 0.55.3
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3 >= 1:3.6
@@ -34,7 +34,7 @@ BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	glib2 >= 1:2.68.0
+Requires:	glib2 >= 1:2.70.0
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,7 +49,7 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.68.0
+Requires:	glib2-devel >= 1:2.70.0
 Requires:	libffi-devel >= 3.0.0
 Requires:	python3-Mako
 Requires:	python3-modules >= 1:3.6
@@ -139,6 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/g-ir-inspect
 %attr(755,root,root) %{_bindir}/g-ir-scanner
 %{_mandir}/man1/g-ir-compiler.1*
+%{_mandir}/man1/g-ir-doc-tool.1*
 %{_mandir}/man1/g-ir-generate.1*
 %{_mandir}/man1/g-ir-scanner.1*
 %attr(755,root,root) %{_libdir}/libgirepository-1.0.so
