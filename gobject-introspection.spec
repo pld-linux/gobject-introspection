@@ -12,6 +12,7 @@ License:	LGPL v2+ (giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gobject-introspection/1.70/%{name}-%{version}.tar.xz
 # Source0-md5:	940ea2d6b92efabc457b9c54ce2ff398
+Patch0:		%{name}-meson.patch
 URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
@@ -80,6 +81,7 @@ Dokumentacja API gobject-introspection.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %{__sed} -i -e "s,^giscannerdir[[:space:]]*=[[:space:]]*.*,giscannerdir='%{py3_sitedir}/giscanner'," giscanner/meson.build
 %{__sed} -i -e '/python_cmd =/ s,/usr/bin/env python@0@,/usr/bin/python@0@,' tools/meson.build
