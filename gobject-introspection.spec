@@ -20,7 +20,7 @@ BuildRequires:	glib2-devel >= 1:2.70.0
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 3.0.0
-BuildRequires:	meson >= 0.55.3
+BuildRequires:	meson >= 0.58.2
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3 >= 1:3.6
