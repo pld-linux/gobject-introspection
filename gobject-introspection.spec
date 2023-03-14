@@ -13,6 +13,7 @@ Group:		Libraries
 Source0:	https://download.gnome.org/sources/gobject-introspection/1.74/%{name}-%{version}.tar.xz
 # Source0-md5:	ed4e290c5ca8737a62c9a7f5347ae10d
 URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
+BuildRequires:	automake
 BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
