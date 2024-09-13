@@ -7,12 +7,12 @@
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.80.1
+Version:	1.82.0
 Release:	1
 License:	LGPL v2+ (libraries, giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/gobject-introspection/1.80/%{name}-%{version}.tar.xz
-# Source0-md5:	ef1496a7a7abfcd31d25b3459ea86ebb
+Source0:	https://download.gnome.org/sources/gobject-introspection/1.82/%{name}-%{version}.tar.xz
+# Source0-md5:	50beb465bc81f33395b5e0e3bbe364ec
 Source1:	https://download.gnome.org/sources/glib/2.80/glib-2.80.0.tar.xz
 # Source1-md5:	3a51e2803ecd22c2dadcd07d9475ebe3
 URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
@@ -21,25 +21,25 @@ BuildRequires:	bison
 %{?with_cairo:BuildRequires:	cairo-gobject-devel}
 BuildRequires:	flex
 BuildRequires:	gcc >= 5:3.2
-%{!?with_bootstrap:BuildRequires:	glib2-devel >= 1:2.80.0}
+%{!?with_bootstrap:BuildRequires:	glib2-devel >= 1:2.82.0}
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 7:3.4
 BuildRequires:	meson >= 1.2.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	python3 >= 1:3.6
+BuildRequires:	python3 >= 1:3.8
 BuildRequires:	python3-Mako
-BuildRequires:	python3-devel >= 1:3.6
+BuildRequires:	python3-devel >= 1:3.8
 BuildRequires:	python3-markdown
-BuildRequires:	python3-modules >= 1:3.6
+BuildRequires:	python3-modules >= 1:3.8
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	glib2 >= 1:2.80.0
+Requires:	glib2 >= 1:2.82.0
 Requires:	libffi >= 7:3.4
 Obsoletes:	gobject-introspection-libs < %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,10 +55,10 @@ Summary:	Header files for gobject-introspection library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gobject-introspection
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.80.0
+Requires:	glib2-devel >= 1:2.82.0
 Requires:	libffi-devel >= 7:3.4
 Requires:	python3-Mako
-Requires:	python3-modules >= 1:3.6
+Requires:	python3-modules >= 1:3.8
 # for ldd
 Requires:	glibc-misc
 Obsoletes:	gobject-introspection-static < 1.62
