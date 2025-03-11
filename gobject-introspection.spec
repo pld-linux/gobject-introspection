@@ -8,7 +8,7 @@ Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
 Version:	1.82.0
-Release:	2
+Release:	3
 License:	LGPL v2+ (libraries, giscanner) and GPL v2+ (tools)
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gobject-introspection/1.82/%{name}-%{version}.tar.xz
