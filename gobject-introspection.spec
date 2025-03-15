@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_without	cairo		# cairo support
 %bcond_without	apidocs		# API documentation
-%bcond_with	bootstrap	# bootstrap from glib < 2.80
+%bcond_with	bootstrap	# bootstrap from glib < 2.82
 
 Summary:	Introspection for GObject libraries
 Summary(pl.UTF-8):	Obserwacja bibliotek GObject
 Name:		gobject-introspection
-Version:	1.82.0
-Release:	3
+Version:	1.84.0
+Release:	1
 License:	LGPL v2+ (libraries, giscanner) and GPL v2+ (tools)
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/gobject-introspection/1.82/%{name}-%{version}.tar.xz
-# Source0-md5:	50beb465bc81f33395b5e0e3bbe364ec
-Source1:	https://download.gnome.org/sources/glib/2.80/glib-2.80.0.tar.xz
-# Source1-md5:	3a51e2803ecd22c2dadcd07d9475ebe3
+Source0:	https://download.gnome.org/sources/gobject-introspection/1.84/%{name}-%{version}.tar.xz
+# Source0-md5:	2a62fb1c584616a8ebcd9dd4d045f27e
+Source1:	https://download.gnome.org/sources/glib/2.82/glib-2.82.0.tar.xz
+# Source1-md5:	9f94b8b15bc22dbe6a2c8aafd6fb0293
 URL:		https://wiki.gnome.org/Projects/GObjectIntrospection
 BuildRequires:	automake
 BuildRequires:	bison
@@ -25,7 +25,7 @@ BuildRequires:	gcc >= 5:3.2
 BuildRequires:	glibc-misc
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.19}
 BuildRequires:	libffi-devel >= 7:3.4
-BuildRequires:	meson >= 1.2.0
+BuildRequires:	meson >= 1.4.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3 >= 1:3.8
@@ -33,9 +33,10 @@ BuildRequires:	python3-Mako
 BuildRequires:	python3-devel >= 1:3.8
 BuildRequires:	python3-markdown
 BuildRequires:	python3-modules >= 1:3.8
+BuildRequires:	python3-setuptools
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.752
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
@@ -88,23 +89,24 @@ Dokumentacja API gobject-introspection.
 %setup -q %{?with_bootstrap:-a1}
 
 %if %{with bootstrap}
-%{__mv} glib-2.80.0 subprojects/glib
+%{__mv} glib-2.82.0 subprojects/glib
 %endif
 
 %{__sed} -i -e "s,^giscannerdir[[:space:]]*=[[:space:]]*.*,giscannerdir='%{py3_sitedir}/giscanner'," giscanner/meson.build
 %{__sed} -i -e '/python_cmd =/ s,/usr/bin/env python@0@,/usr/bin/python@0@,' tools/meson.build
 
 %build
-%meson build \
+%meson \
+	-Dcairo=%{__enabled_disabled cairo} \
 	-Ddoctool=enabled \
 	-Dgtk_doc=%{__true_false apidocs}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
